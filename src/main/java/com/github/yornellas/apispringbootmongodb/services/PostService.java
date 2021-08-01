@@ -1,5 +1,6 @@
 package com.github.yornellas.apispringbootmongodb.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,9 @@ public class PostService {
 			throw new ObjectNotFoundException("Post não encontrado");
 		}
 		return obj;
+	}
+	
+	public List<Post> findByTitle(String text) {
+		return repository.findByTitleContainingIgnoreCase(text);
 	}
 }
